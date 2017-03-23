@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <!--<div th:if="${items} and ${items.size()}">-->
+    <!--</div>-->
+
+    <!-- TODO #3 - Use the same list display from search.html -->
+
+    <table>
+        <tr th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
+            <td><a th:href="@{/list/jobs(column=${column},value=${item})}" th:text="'Position Type: ' + ${job.position_type}
+                            + ' - Title: ' + ${job.name}
+                            + ' - Employer ' + ${job.employer}
+                            + ' - Location: ' + ${job.location}
+                            + ' - Core Competency: ' + ${job.core_competency}"></a></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
